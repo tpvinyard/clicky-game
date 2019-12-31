@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import CharacterCard from './components/CharacterCard/CharacterCard';
+import NavBar from './components/NavBar';
+import Score from './components/Score';
 import characters from './characters.json';
 import './App.css';
 
@@ -37,7 +39,10 @@ class App extends Component {
   render() {
     return (
       <div>
+        <NavBar/>
         <h1>Hello!</h1>
+        <Score type="Score" score={this.state.pickedCharacters.length}/>
+        <Score type="Top Score" score={this.state.topScore}/>
         {this.state.characters.map(character => (
           <CharacterCard
             key={character.id}
