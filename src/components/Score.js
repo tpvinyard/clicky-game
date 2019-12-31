@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Score = props => (
-    <div className="score">
+    <h4 className="score">
         {props.type}: {props.score}
-    </div>
+    </h4>
 )
 
 export default Score;
