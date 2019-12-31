@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import CharacterCard from './components/CharacterCard';
+import CharacterCard from './components/CharacterCard/CharacterCard';
+import characters from './characters.json';
 import './App.css';
 
 class App extends Component {
 
   state = {
-    //characters: characters,
+    characters: characters,
     pickedCharacters: [],
     topScore: 0
   }
@@ -36,7 +37,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.pickedCharacters.map(character => (
+        <h1>Hello!</h1>
+        {this.state.characters.map(character => (
           <CharacterCard
             key={character.id}
             id={character.id}
