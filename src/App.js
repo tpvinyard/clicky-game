@@ -14,18 +14,20 @@ class App extends Component {
   }
 
   isPicked = event => {
-    const name = event.target.attributes.getNamedItem("name").value;
-    this.checkGuess(name);
+    const name = event.target.attributes.getNamedItem('name').value
+    console.log(event.target.attributes.getNamedItem('name').value)
+    this.checkGuess(name, this.updateTopScore);
   }
 
-  updateTopScore = (newState) => {
+  updateTopScore = (newState, cb) => {
     if (newState.pickedCharacters.length > newState.topScore) {
       newState.topScore++;
       this.setState({ newState })
     }
+    cb(newState);
   }
 
-  checkGuess = (name) => {
+  checkGuess = (name, cb) => {
     const newState = { ...this.state };
     if (newState.pickedCharacters.includes(name)) {
       newState.pickedCharacters = []
@@ -33,6 +35,14 @@ class App extends Component {
     } else {
       newState.pickedCharacters.push(name);
       this.setState({ newState })
+    }
+    cb(newState, this.checkWin)
+  }
+
+  checkWin = (newState) => {
+    if(newState.pickedCharacters.length === 12) {
+      newState.pickedCharacters = [];
+      this.setState({ newState });
     }
   }
 
