@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import CharacterCard from './components/CharacterCard';
 import './App.css';
-import { render } from '@testing-library/react';
 
 class App extends Component {
 
@@ -9,6 +8,18 @@ class App extends Component {
     //characters: characters,
     pickedCharacters: [],
     topScore: 0
+  }
+
+  isPicked = event => {
+    const name = event.target.attributes.getNamedItem("name").value;
+    this.checkGuess(name);
+  }
+
+  updateTopScore = (newState) => {
+    if (newState.pickedCharacters.length > newState.topScore) {
+      newState.topScore++;
+      this.setState({ newState })
+    }
   }
 
   checkGuess = (name) => {
@@ -24,10 +35,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Made it!</h1>
-        </header>
+      <div>
+        {this.state.pickedCharacters.map(character => (
+          <CharacterCard
+            key={character.id}
+            id={character.id}
+            name={character.name}
+            image={character.image}
+            isPicked={this.isPicked}
+          />
+        ))}
       </div>
     )
   }
