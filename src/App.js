@@ -3,6 +3,7 @@ import CharacterCard from './components/CharacterCard/CharacterCard';
 import NavBar from './components/NavBar';
 import Score from './components/Score';
 import characters from './characters.json';
+import Modal from 'react-modal';
 import './App.css';
 
 class App extends Component {
@@ -10,13 +11,16 @@ class App extends Component {
   state = {
     characters: characters,
     pickedCharacters: [],
-    topScore: 0
+    topScore: 0,
+    message: "",
+    modalIsOpen: false
   }
 
   isPicked = event => {
     const name = event.target.attributes.getNamedItem('name').value
     console.log(event.target.attributes.getNamedItem('name').value)
     console.log(this.state)
+    this.shuffleCharacters();
     this.checkGuess(name, this.updateTopScore);
   }
 
@@ -28,12 +32,42 @@ class App extends Component {
     cb(newState);
   }
 
+  shuffleCharacters = () => {
+    this.setState({characters: this.shuffleArray(this.state.characters)})
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+ 
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+ 
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
+  shuffleArray = (array) => {
+    let i, j, x;
+    for (i = array.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = array[i];
+      array[i] = array[j];
+      array[j] = x;
+    }
+    return array;
+  }
+
   checkGuess = (name, cb) => {
     const newState = { ...this.state };
     if (newState.pickedCharacters.includes(name)) {
+      newState.message = `You already chose that character. Game Over!`
       newState.pickedCharacters = []
+      alert(`You already chose that character. Game Over!`)
+      this.setState({ message: newState.message})
       this.setState({ pickedCharacters: []})
-      alert("you lose");
     } else {
       newState.pickedCharacters.push(name);
       this.setState({ pickedCharacters: newState.pickedCharacters })
@@ -43,7 +77,10 @@ class App extends Component {
 
   checkWin = (newState) => {
     if(newState.pickedCharacters.length === 12) {
+      newState.message = `You win! Congratulations`
+      alert(`You win! Congratulations`)
       newState.pickedCharacters = [];
+      this.setState({ message: newState.message})
       this.setState({ pickedCharacters: [] });
     }
   }
@@ -52,6 +89,9 @@ class App extends Component {
     return (
       <div>
         <NavBar/>
+        {/* <Modal
+          message={this.state.message}
+        /> */}
         <div className="container">
           <div className="row score-info valign-wrapper">
             <div className="col m8 s12">
