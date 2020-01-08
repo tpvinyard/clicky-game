@@ -11,7 +11,7 @@
     "react-modal": "^3.11.1",
     "react-scripts": "3.3.0"
   },
-  "homepage": "https://tpvinyard.github.io/clicky-game/",
+  "homepage": "https://tpvinyard.github.io/clicky-game",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

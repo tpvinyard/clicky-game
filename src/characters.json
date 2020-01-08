@@ -2,62 +2,62 @@
     {
         "id": 1,
         "name": "Arnold",
-        "image": "![](/images/arnold.jpeg)"
+        "image": "![](images/arnold.jpeg)"
     },
     {
         "id": 2,
         "name": "Curly",
-        "image": "../images/curly.jpeg"
+        "image": "![](images/curly.jpeg)"
     },
     {
         "id": 3,
         "name": "Gerald",
-        "image": "../images/gerald.jpeg"
+        "image": "![](images/gerald.jpeg)"
     },
     {
         "id": 4,
         "name": "Grandpa",
-        "image": "../images/grandpa.jpeg"
+        "image": "![](images/grandpa.jpeg)"
     },
     {
         "id": 5,
         "name": "Harold",
-        "image": "../images/harold.png"
+        "image": "![](images/harold.png)"
     },
     {
         "id": 6,
         "name": "Helga",
-        "image": "../images/helga.jpeg"
+        "image": "![](images/helga.jpeg)"
     },
     {
         "id": 7,
         "name": "Nadine",
-        "image": "../images/nadine.jpeg"
+        "image": "![](images/nadine.jpeg)"
     },
     {
         "id": 8,
         "name": "Phoebe",
-        "image": "../images/phoebe.png"
+        "image": "![](images/phoebe.png)"
     },
     {
         "id": 9,
         "name": "Rhonda",
-        "image": "../images/rhonda.jpeg"
+        "image": "![](images/rhonda.jpeg)"
     },
     {
         "id": 10,
         "name": "Sid",
-        "image": "../images/sid.jpeg"
+        "image": "![](images/sid.jpeg)"
     },
     {
         "id": 11,
         "name": "Stinky",
-        "image": "../images/stinky.jpeg"
+        "image": "![](images/stinky.jpeg)"
     },
     {
         "id": 12,
         "name": "Stump",
-        "image": "../images/stumpy.jpeg"
+        "image": "![](images/stumpy.jpeg)"
     }
 
 ]
