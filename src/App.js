@@ -5,6 +5,7 @@ import Score from './components/Score';
 import characters from './characters.json';
 import Modal from 'react-modal';
 import './App.css';
+import { HashRouter } from 'react-router-dom';
 
 class App extends Component {
 
@@ -87,34 +88,36 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar/>
-        {/* <Modal
-          message={this.state.message}
-        /> */}
-        <div className="container">
-          <div className="row score-info valign-wrapper">
-            <div className="col m8 s12">
-              <h4>Test your skills. Don't click the same image twice!</h4>
-            </div>
-            <div className="col m4 s12 center">
-              <Score type="Score" score={this.state.pickedCharacters.length}/>
-              <Score type="Top Score" score={this.state.topScore}/>
+      <HashRouter basename='/'>
+        <div>
+          <NavBar/>
+          {/* <Modal
+            message={this.state.message}
+          /> */}
+          <div className="container">
+            <div className="row score-info valign-wrapper">
+              <div className="col m8 s12">
+                <h4>Test your skills. Don't click the same image twice!</h4>
+              </div>
+              <div className="col m4 s12 center">
+                <Score type="Score" score={this.state.pickedCharacters.length}/>
+                <Score type="Top Score" score={this.state.topScore}/>
+              </div>
             </div>
           </div>
+          <div id="grid" className="container">
+            {this.state.characters.map(character => (
+              <CharacterCard
+                key={character.id}
+                id={character.id}
+                name={character.name}
+                image={character.image}
+                isPicked={this.isPicked}
+              />
+            ))}
+          </div>
         </div>
-        <div id="grid" className="container">
-          {this.state.characters.map(character => (
-            <CharacterCard
-              key={character.id}
-              id={character.id}
-              name={character.name}
-              image={character.image}
-              isPicked={this.isPicked}
-            />
-          ))}
-        </div>
-      </div>
+      </HashRouter>
     )
   }
 }
