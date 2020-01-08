@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Arnold",
-        "image": "../images/arnold.jpeg"
+        "image": "![](/images/arnold.jpeg)"
     },
     {
         "id": 2,
